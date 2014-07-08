@@ -1,4 +1,4 @@
-Moodle 2.3 plugin: EasyOChem Marvinsketch Mechanism (EasyOMech) question type
+Moodle 2.3+ plugin: EasyOChem MarvinJS Mechanism (EasyOMechJS) question type
 
 Carl LeBlond
 
@@ -9,18 +9,17 @@ This will NOT work with Moodle 2.0 or older, since it uses the new
 question API implemented in Moodle 2.1.
 
 This is a Moodle question type. It should come as a self-contained 
-"easyomech" folder which should be placed inside the "question/type" folder
+"easyomechjs" folder which should be placed inside the "question/type" folder
 which already exists on your Moodle web server.
 
 Once you have done that, visit your Moodle admin page - the database 
 tables should automatically be upgraded to include an extra table for
 the EasyOChem Mechanism question type.
 
-You must download a recent copy of Marvin Applets from www.chemaxon.com (free for academic use)
-and intall it in folder named "marvin" at your web root.  Alternatively 
-you could edit the php scripts if your marvin installation is elsewhere.
+You must download a recent copy of MarvinJS from www.chemaxon.com (free for academic use)
+and install it in folder named "marvin4js" at your web root.  There is a admin setting in
+Moodle so you can change this setting.
 
-I have no affiliation with Chemaxon.
 
 USAGE:
 
