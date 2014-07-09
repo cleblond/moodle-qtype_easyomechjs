@@ -68,15 +68,26 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
         $result .= html_writer::tag('div', $questiontext, array('class' => 'qtext'));
 
         if ($options->readonly) {
-            $result .= html_writer::tag('input', '', array('type' => 'button', 'value' => 'My Response',
+
+           /* $result .= html_writer::tag('input', '', array('type' => 'button', 'value' => 'My Response',
             'onClick' => 'var s = document.getElementById("'.$myanswerid.'").value;
             document.getElementById("'.$name2.'").setMol(s, "mrv");'));
             $result .= html_writer::tag('input', '', array('type' => 'button', 'value' => 'Correct Answer',
             'onClick' => 'var s = document.getElementById("'.$correctanswerid.'").value;
-            document.getElementById("'.$name2.'").setMol(s, "mrv");'));
+            document.getElementById("'.$name2.'").setMol(s, "mrv");'));  */
+
+            $result .= html_writer::tag('input', '', array('id' => 'myresponse'.$qa->get_slot(),
+            'type' => 'button', 'value' => 'My Response'));
+
+            $result .= html_writer::tag('input', '', array('id' => 'corresponse'.$qa->get_slot(),
+            'type' => 'button', 'value' => 'Correct Answer'));
+
+                $this->page->requires->js_init_call('M.qtype_easyomechjs.showmyresponse', array($CFG->version, $qa->get_slot()));
+                $this->page->requires->js_init_call('M.qtype_easyomechjs.showcorresponse', array($CFG->version, $qa->get_slot()));
+
 
             // If order important add button to control arrows!
-
+/*
             if ($orderimportant == 1) {
 
                 // Show buttons for arrows order controls!
@@ -93,7 +104,7 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
                 $this->page->requires->js_init_call('M.qtype_easyomechjs.init_showarrowsrev', array($CFG->version, $qa->get_slot()));
 
             }
-
+*/
         }
 
         $toreplaceid = 'applet'.$qa->get_slot();

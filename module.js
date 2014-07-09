@@ -1,6 +1,106 @@
 M.qtype_easyomechjs = {}
 
 M.qtype_easyomechjs = {
+
+    showmyresponse: function(Y, moodle_version, slot) {
+   /* var handleSuccess = function(o) {};
+    var handleFailure = function(o) {
+
+    };
+    var callback = {
+        success: handleSuccess,
+        failure: handleFailure
+    };
+    if (moodle_version >= 2012120300) { //Moodle 2.4 or higher
+        YAHOO = Y.YUI2;
+    }  */
+    var refreshBut = Y.one("#myresponse" + slot, slot);
+   
+    refreshBut.on("click", function() {
+        var newxmlStr = document.getElementById('my_answer' +
+            slot).value;
+       
+        MarvinJSUtil.getEditor("#EASYOMECH" + slot).then(function(
+            sketcherInstance) {
+                    //alert("slot="+slot);
+            marvinController = new MarvinControllerClass(
+                sketcherInstance);
+            var pastePromise = marvinController.sketcherInstance
+                .importStructure("mrv", newxmlStr);
+        });
+
+       var MarvinControllerClass = (function() {
+            function MarvinControllerClass(sketcherInstance) {
+                this.sketcherInstance = sketcherInstance;
+                this.init();
+            }
+            MarvinControllerClass.prototype.init = function init() {
+                this.sketcherInstance.setDisplaySettings({
+                    "cpkColoring": true,
+                    "lonePairsVisible": true
+                });  
+            };
+            return MarvinControllerClass;
+        }());
+
+        //document.getElementById('EASYOMECH' + slot).setMol(
+        //    newxmlStr, "mrv");
+    });
+    },
+
+
+
+    showcorresponse: function(Y, moodle_version, slot) {
+    /*
+    var handleSuccess = function(o) {};
+    var handleFailure = function(o) {
+      
+    };
+    var callback = {
+        success: handleSuccess,
+        failure: handleFailure
+    };
+    if (moodle_version >= 2012120300) { //Moodle 2.4 or higher
+        YAHOO = Y.YUI2;
+    } */
+    var refreshBut = Y.one("#corresponse" + slot, slot);
+    refreshBut.on("click", function() {
+        var newxmlStr = document.getElementById('correct_answer' +
+            slot).value;
+        
+        MarvinJSUtil.getEditor("#EASYOMECH" + slot).then(function(
+            sketcherInstance) {
+                    //alert("slot="+slot);
+            marvinController = new MarvinControllerClass(
+                sketcherInstance);
+            var pastePromise = marvinController.sketcherInstance
+                .importStructure("mrv", newxmlStr);
+        });
+
+       var MarvinControllerClass = (function() {
+            function MarvinControllerClass(sketcherInstance) {
+                this.sketcherInstance = sketcherInstance;
+                this.init();
+            }
+            MarvinControllerClass.prototype.init = function init() {
+                this.sketcherInstance.setDisplaySettings({
+                    "cpkColoring": true,
+                    "lonePairsVisible": true
+                });  
+            };
+            return MarvinControllerClass;
+        }());
+
+        //document.getElementById('EASYOMECH' + slot).setMol(
+        //    newxmlStr, "mrv");
+    });
+    },
+
+
+
+
+
+
     init_showarrowsrev: function(Y, moodle_version, slot) {
     var handleSuccess = function(o) {};
     var handleFailure = function(o) {
