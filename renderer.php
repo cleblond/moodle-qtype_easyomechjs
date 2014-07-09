@@ -139,10 +139,10 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
             // Buttons to show correct and user answers - yeah its a hack!
 
             $result .= html_writer::tag('textarea', $qa->get_last_qt_var('answer'),
-            array('id' => $myanswerid, 'name' => $myanswerid/*, 'style' => 'display:none;'*/));
+            array('id' => $myanswerid, 'name' => $myanswerid, 'style' => 'display:none;'));
 
             $result .= html_writer::tag('textarea', $answertemp['answer'], array('id' => $correctanswerid,
-            'name' => $correctanswerid/*, 'style' => 'display:none;'*/));
+            'name' => $correctanswerid, 'style' => 'display:none;'));
 
         }
             $result .= html_writer::tag('div',
