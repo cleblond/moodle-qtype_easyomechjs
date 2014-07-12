@@ -87,7 +87,7 @@ class qtype_easyomechjs_question extends qtype_shortanswer_question {
             $i = $i + 1;
             $numbasepointsans = $cmlans->MDocument[0]->MEFlow->MEFlowBasePoint->count();
         }
-echo "<br>usrall".$arrowsusrall;
+//echo "<br>usrall".$arrowsusrall;
 
             $i = 0;
             $arrowsansall = "";
@@ -106,7 +106,7 @@ echo "<br>usrall".$arrowsusrall;
             $arrowsansall .= "*".$arrowans[$i];
             $i = $i + 1;
         }
-echo "<br>ansall".$arrowsansall;
+//echo "<br>ansall".$arrowsansall;
         if (!isset($arrowusr)) {
             $this->usecase = "You did not add any arrows.  Use the arrow icon on the left to add arrows next time!";
             return 0;

@@ -33,10 +33,11 @@ class qtype_easyomechjs_edit_form extends qtype_shortanswer_edit_form {
     protected function definition_inner($mform) {
         global $PAGE, $CFG;
 
-//        $PAGE->requires->js('/question/type/easyomechjs/easyomechjs_script.js');
         $PAGE->requires->css('/question/type/easyomechjs/easyomechjs_styles.css');
-        $PAGE->requires->js('/question/type/easyomechjs/js/promise-0.1.1.min.js');
-        $PAGE->requires->js('/question/type/easyomechjs/js/marvinjslauncher.js');
+	$marvinjsconfig = get_config('qtype_easyomechjs_options');
+	$marvinjspath = $marvinjsconfig->path;
+        $PAGE->requires->js(new moodle_url('http://'.$_SERVER['HTTP_HOST'].$marvinjspath.'/js/promise-0.1.1.min.js'));
+        $PAGE->requires->js(new moodle_url('http://'.$_SERVER['HTTP_HOST'].$marvinjspath.'/js/marvinjslauncher.js'));
         $mform->addElement('static', 'answersinstruct',
         get_string('correctanswers', 'qtype_easyomechjs'),
         get_string('filloutoneanswer', 'qtype_easyomechjs'));

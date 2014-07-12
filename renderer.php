@@ -45,8 +45,11 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
         $myanswerid = "my_answer".$qa->get_slot();
         $correctanswerid = "correct_answer".$qa->get_slot();
 
-        $PAGE->requires->js('/question/type/easyomechjs/js/promise-0.1.1.min.js');
-        $PAGE->requires->js('/question/type/easyomechjs/js/marvinjslauncher.js');
+        $marvinjsconfig = get_config('qtype_easyomechjs_options');
+	$marvinjspath = $marvinjsconfig->path;
+        $PAGE->requires->js(new moodle_url('http://'.$_SERVER['HTTP_HOST'].$marvinjspath.'/js/promise-0.1.1.min.js'));
+        $PAGE->requires->js(new moodle_url('http://'.$_SERVER['HTTP_HOST'].$marvinjspath.'/js/marvinjslauncher.js'));
+
 
         if (preg_match('/_____+/', $questiontext, $matches)) {
             $placeholder = $matches[0];
@@ -69,13 +72,6 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
 
         if ($options->readonly) {
 
-           /* $result .= html_writer::tag('input', '', array('type' => 'button', 'value' => 'My Response',
-            'onClick' => 'var s = document.getElementById("'.$myanswerid.'").value;
-            document.getElementById("'.$name2.'").setMol(s, "mrv");'));
-            $result .= html_writer::tag('input', '', array('type' => 'button', 'value' => 'Correct Answer',
-            'onClick' => 'var s = document.getElementById("'.$correctanswerid.'").value;
-            document.getElementById("'.$name2.'").setMol(s, "mrv");'));  */
-
             $result .= html_writer::tag('input', '', array('id' => 'myresponse'.$qa->get_slot(),
             'type' => 'button', 'value' => 'My Response'));
 
@@ -85,26 +81,6 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
                 $this->page->requires->js_init_call('M.qtype_easyomechjs.showmyresponse', array($CFG->version, $qa->get_slot()));
                 $this->page->requires->js_init_call('M.qtype_easyomechjs.showcorresponse', array($CFG->version, $qa->get_slot()));
 
-
-            // If order important add button to control arrows!
-/*
-            if ($orderimportant == 1) {
-
-                // Show buttons for arrows order controls!
-                $result .= html_writer::tag('input', '', array('class' => 'arrowbutton', 'id' => 'showorder'.$qa->get_slot(),
-                'type' => 'button', 'value' => 'Forward'));
-
-                $result .= html_writer::tag('input', '', array('class' => 'arrowbutton', 'id' => 'showorderrev'.$qa->get_slot(),
-                'type' => 'button', 'value' => 'Reverse'));
-
-                $result .= html_writer::tag('input', '', array('id' => 'curarrow'.$qa->get_slot(), 'type' => 'hidden',
-                'value' => 0));
-                $appletid = 'EASYOMECH'.$qa->get_slot();
-                $this->page->requires->js_init_call('M.qtype_easyomechjs.init_showarrows', array($CFG->version, $qa->get_slot()));
-                $this->page->requires->js_init_call('M.qtype_easyomechjs.init_showarrowsrev', array($CFG->version, $qa->get_slot()));
-
-            }
-*/
         }
 
         $toreplaceid = 'applet'.$qa->get_slot();
@@ -186,19 +162,10 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
     protected function require_js($toreplaceid, question_attempt $qa, $readonly, $correctness) {
         global $PAGE, $CFG;
 
-        $marvinconfig = get_config('qtype_easyomechjs_options');
-	$marvinpath = $marvinconfig->path;
+        $marvinjsconfig = get_config('qtype_easyomechjs_options');
+	$marvinjspath = "http://" . $_SERVER['HTTP_HOST'] . $marvinjsconfig->path;
 
-/*        $jsmodule = array(
-            'name'     => 'qtype_easyomechjs',
-            'fullpath' => '/question/type/easyomechjs/module.js',
-            'requires' => array(),
-            'strings' => array(
-                array('enablejava', 'qtype_easyomechjs')
-            )
-        );  */
         $topnode = 'div.que.easyomechjs#q'.$qa->get_slot();
-        $appleturl = new moodle_url('appletlaunch.jar');
         $feedbackimage = '';
 
         if ($correctness) {
@@ -213,12 +180,11 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
                                             $name,
                                             $appletid,
                                             $topnode,
-                                            $appleturl->out(),
                                             $feedbackimage,
                                             $readonly,
                                             $strippedanswerid,
                                             $CFG->wwwroot,
-                                            $marvinpath),
+                                            $marvinjspath),
                                       false);
 
     }
