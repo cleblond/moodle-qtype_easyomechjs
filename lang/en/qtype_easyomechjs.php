@@ -27,15 +27,9 @@
 $string['caseorderimportant'] = '<b>Arrow Order Important?</b> Is the order in which the arrows are added important?';
 $string['orderimportant'] = 'Yes';
 $string['ordernotimportant'] = 'No';
-
-
 $string['caseshowproducts'] = 'Show (easier)';
 $string['casenoshowproducts'] = 'Hide Products (more difficult)';
 $string['caseshowornoshowproducts'] = '<b>Show Products?</b> Would you like to have the products removed from the question (more difficult)?';
-
-
-
-
 $string['addmoreanswerblanks'] = 'Blanks for {no} More Answers';
 $string['answermustbegiven'] = 'You must enter an answer if there is a grade or feedback.';
 $string['answerno'] = 'Answer {$a}';
@@ -45,7 +39,7 @@ $string['pluginname_link'] = 'question/type/easyomechjs';
 $string['pluginnameadding'] = 'Adding a Electron Pushing / Curved Arrow question (MarvinJS)';
 $string['pluginnameediting'] = 'Editing a Electron Pushing / Curved Arrow question (MarvinJS)';
 $string['pluginnamesummary'] = 'Students must provide curved arrows on a structure or reaction template that you predefine.  You can ask questions such as;<ul><li>Please add curved arrows showing the flow of electrons for the following reaction?</li><li>Please add curved arrows showing how the following resonance structure could be obtained?</li></ul>';
-$string['easyomechjs_options'] =  'Path to Marvin Applet installation';
+$string['easyomechjs_options'] = 'Path to Marvin Applet installation';
 $string['enablejava'] = 'Tried but failed to load Marvinsketch editor. You have not got a JAVA runtime environment working in your browser. You will need one to attempt this question.';
 $string['enablejavaandjavascript'] = 'Loading Marvinsketch editor.... If this message does not get replaced by the Marvin editor then you have not got javascript and a JAVA runtime environment working in your browser.';
 $string['configeasyomechjsoptions'] = 'The path of your marvin installation relative to your web root.  (e.g. If your moodle is installed at /var/www/moodle and you install your marvin at /var/www/marvin then you should use the default /marvin)';
