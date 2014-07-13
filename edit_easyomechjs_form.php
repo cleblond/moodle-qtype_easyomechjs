@@ -34,20 +34,11 @@ class qtype_easyomechjs_edit_form extends qtype_shortanswer_edit_form {
         $mform->addElement('static', 'answersinstruct',
             get_string('correctanswers', 'qtype_easyomechjs'), get_string('filloutoneanswer', 'qtype_easyomechjs'));
         $mform->closeHeaderBefore('answersinstruct');
-        $menu = array(
-            get_string('caseshowproducts', 'qtype_easyomechjs'),
-            get_string('casenoshowproducts', 'qtype_easyomechjs')
-        );
-        $mform->addElement('select', 'hideproducts', get_string('caseshowornoshowproducts', 'qtype_easyomechjs'), $menu);
-        $menu = array(
-            get_string('ordernotimportant', 'qtype_easyomechjs'),
-            get_string('orderimportant', 'qtype_easyomechjs')
-        );
-        $mform->addElement('select', 'orderimportant', get_string('caseorderimportant', 'qtype_easyomechjs'), $menu);
         $mform->addElement('html', html_writer::start_tag('div', array(
             'style' => 'width:650px;',
             'id' => 'appletdiv'
         )));
+
         $mform->addElement('html', html_writer::start_tag('div', array(
             'style' => 'float: left;font-style: italic ;'
         )));
