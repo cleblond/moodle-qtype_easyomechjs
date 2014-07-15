@@ -385,9 +385,7 @@ M.qtype_easyomechjs.init_getanswerstring = function(Y, moodle_version) {
             MarvinJSUtil.getEditor("#MSketch").then(
                 function(sketcherInstance) {
                     marvinController = new MarvinControllerClass(
-                        sketcherInstance, $(
-                            "#chbx-coloring"), $(
-                            "#chbx-carbonVis"));
+                        sketcherInstance);
                     var buttonid = node.getAttribute(
                         'id');
                     var textfieldid = 'id_answer_' +
@@ -403,15 +401,10 @@ M.qtype_easyomechjs.init_getanswerstring = function(Y, moodle_version) {
                 });
             var MarvinControllerClass = (function() {
                 function MarvinControllerClass(
-                    sketcherInstance,
-                    cpkCheckbox, carbonCheckbox
+                    sketcherInstance
                 ) {
                     this.sketcherInstance =
                         sketcherInstance;
-                    this.cpkCheckbox =
-                        cpkCheckbox;
-                    this.carbonCheckbox =
-                        carbonCheckbox;
                     this.init();
                 }
                 MarvinControllerClass.prototype.init =
