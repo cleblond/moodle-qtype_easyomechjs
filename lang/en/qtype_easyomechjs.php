@@ -24,12 +24,6 @@
  */
 
 
-$string['caseorderimportant'] = '<b>Arrow Order Important?</b> Is the order in which the arrows are added important?';
-$string['orderimportant'] = 'Yes';
-$string['ordernotimportant'] = 'No';
-$string['caseshowproducts'] = 'Show (easier)';
-$string['casenoshowproducts'] = 'Hide Products (more difficult)';
-$string['caseshowornoshowproducts'] = '<b>Show Products?</b> Would you like to have the products removed from the question (more difficult)?';
 $string['addmoreanswerblanks'] = 'Blanks for {no} More Answers';
 $string['answermustbegiven'] = 'You must enter an answer if there is a grade or feedback.';
 $string['answerno'] = 'Answer {$a}';
