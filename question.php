@@ -31,7 +31,7 @@ class qtype_easyomechjs_question extends qtype_shortanswer_question {
         $test           = $DB->get_record('user', array(
             'id' => '1'
         ));
-        $orderimportant = $this->orderimportant;
+
         if (!array_key_exists('answer', $response) || is_null($response['answer'])) {
             return false;
         }
@@ -90,26 +90,12 @@ class qtype_easyomechjs_question extends qtype_shortanswer_question {
                 return 0;
             }
         }
-        if ($orderimportant == 0) {
+
             if (array_count_values($arrowusr) == array_count_values($arrowans)) {
                 return 1;
             } else {
                 return 0;
             }
-        }
-        // Order important!
-        if ($orderimportant == 1) {
-            if ($arrowusr == $arrowans) {
-                return 1;
-            } else {
-                // Check to see if it just that tyhe order is incorrect!
-                if (array_count_values($arrowusr) == array_count_values($arrowans)) {
-                    $this->usecase = "Although you had the correct arrows, you placed them in the wrong order.";
-                    return false;
-                }
-                return 0;
-            }
-        }
     }
     public function get_expected_data() {
         return array(

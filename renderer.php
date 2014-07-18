@@ -33,7 +33,6 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
     public function formulation_and_controls(question_attempt $qa, question_display_options $options) {
         global $CFG, $PAGE;
         $question        = $qa->get_question();
-        $orderimportant  = $question->orderimportant;
         $questiontext    = $question->format_questiontext($qa);
         $placeholder     = false;
         $myanswerid      = "my_answer" . $qa->get_slot();
@@ -97,12 +96,12 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
         if (!$options->readonly) {
             $question   = $qa->get_question();
             $answertemp = $question->get_correct_response();
-            if ($question->hideproducts == 0) {
-                $strippedxml = $this->remove_xml_tags($answertemp['answer'], 'MEFlow');
-            } else {
+            //if ($question->hideproducts == 0) {
+            //    $strippedxml = $this->remove_xml_tags($answertemp['answer'], 'MEFlow');
+            //} else {
                 $strippedxml = $this->remove_xml_tags($answertemp['answer'], 'MEFlow');
                 $strippedxml = $this->remove_xml_tags($strippedxml, 'productList');
-            }
+            //}
             $strippedanswerid = "stripped_answer" . $qa->get_slot();
             $result .= html_writer::tag('textarea', $strippedxml, array(
                 'id' => $strippedanswerid,

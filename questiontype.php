@@ -33,7 +33,7 @@ require_once($CFG->dirroot . '/question/type/shortanswer/questiontype.php');
 
 class qtype_easyomechjs extends qtype_shortanswer {
     public function extra_question_fields() {
-        return array('question_easyomechjs', 'answers', 'hideproducts', 'orderimportant');
+        return array('question_easyomechjs', 'answers');
     }
 
     public function questionid_column_name() {
