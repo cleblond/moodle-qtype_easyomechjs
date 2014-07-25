@@ -23,7 +23,8 @@ M.qtype_easyomechjs = {
                     function init() {
                         this.sketcherInstance.setDisplaySettings({
                             "cpkColoring": true,
-                            "lonePairsVisible": true
+                            "lonePairsVisible": true,
+                            "toolbars": "education"
                         });
                     };
                 return MarvinControllerClass;
@@ -53,7 +54,8 @@ M.qtype_easyomechjs = {
                     function init() {
                         this.sketcherInstance.setDisplaySettings({
                             "cpkColoring": true,
-                            "lonePairsVisible": true
+                            "lonePairsVisible": true,
+                            "toolbars": "education"
                         });
                     };
                 return MarvinControllerClass;
@@ -133,7 +135,8 @@ M.qtype_easyomechjs = {
                     function init() {
                         this.sketcherInstance.setDisplaySettings({
                             "cpkColoring": true,
-                            "lonePairsVisible": true
+                            "lonePairsVisible": true,
+                            "toolbars": "education"
                         });
                     };
                 return MarvinControllerClass;
@@ -212,7 +215,8 @@ M.qtype_easyomechjs = {
                     function init() {
                         this.sketcherInstance.setDisplaySettings({
                             "cpkColoring": true,
-                            "lonePairsVisible": true
+                            "lonePairsVisible": true,
+                            "toolbars": "education"
                         });
                     };
                 return MarvinControllerClass;
@@ -235,12 +239,10 @@ M.qtype_easyomechjs = {
             MarvinJSUtil.getEditor("#" + appletid).then(function(
                 sketcherInstance) {
                 marvinController = new MarvinControllerClass(
-                    sketcherInstance, $("#chbx-coloring"),
-                    $("#chbx-carbonVis"));
+                    sketcherInstance);
             });
             var MarvinControllerClass = (function() {
-                function MarvinControllerClass(sketcherInstance,
-                    cpkCheckbox, carbonCheckbox) {
+                function MarvinControllerClass(sketcherInstance) {
                     this.sketcherInstance =
                         sketcherInstance;
                     this.init();
@@ -253,6 +255,7 @@ M.qtype_easyomechjs = {
                 exportPromise = marvinController.sketcherInstance
                     .exportStructure("mrv", null)
                 exportPromise.then(function(source) {
+                    console.log(topnode);
                     Y.one(topnode + ' input.answer').set(
                         'value', source);
                 });
@@ -411,7 +414,8 @@ M.qtype_easyomechjs.init_getanswerstring = function(Y, moodle_version) {
                     function init() {
                         this.sketcherInstance.setDisplaySettings({
                             "cpkColoring": true,
-                            "lonePairsVisible": true
+                            "lonePairsVisible": true,
+                            "toolbars": "education"
                         });
                     };
                 return MarvinControllerClass;

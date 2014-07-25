@@ -91,11 +91,11 @@ class qtype_easyomechjs_question extends qtype_shortanswer_question {
             }
         }
 
-            if (array_count_values($arrowusr) == array_count_values($arrowans)) {
-                return 1;
-            } else {
-                return 0;
-            }
+        if (array_count_values($arrowusr) == array_count_values($arrowans)) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
     public function get_expected_data() {
         return array(

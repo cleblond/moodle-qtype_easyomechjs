@@ -96,12 +96,7 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
         if (!$options->readonly) {
             $question   = $qa->get_question();
             $answertemp = $question->get_correct_response();
-            //if ($question->hideproducts == 0) {
-            //    $strippedxml = $this->remove_xml_tags($answertemp['answer'], 'MEFlow');
-            //} else {
-                $strippedxml = $this->remove_xml_tags($answertemp['answer'], 'MEFlow');
-                $strippedxml = $this->remove_xml_tags($strippedxml, 'productList');
-            //}
+            $strippedxml = $this->remove_xml_tags($answertemp['answer'], 'MEFlow');
             $strippedanswerid = "stripped_answer" . $qa->get_slot();
             $result .= html_writer::tag('textarea', $strippedxml, array(
                 'id' => $strippedanswerid,
