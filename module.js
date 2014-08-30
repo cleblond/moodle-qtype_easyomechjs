@@ -311,8 +311,7 @@ M.qtype_easyomechjs = {
         MarvinJSUtil.getEditor("#" + appletid).then(function(
             sketcherInstance) {
             marvinController = new MarvinControllerClass(
-                sketcherInstance, $("#chbx-coloring"), $(
-                    "#chbx-carbonVis"));
+                sketcherInstance);
             var pastePromise = marvinController.sketcherInstance
                 .importStructure("mrv", document.getElementById(
                     stripped_answer_id).value);
