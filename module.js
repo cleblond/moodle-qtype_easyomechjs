@@ -341,6 +341,7 @@ M.qtype_easyomechjs = {
         newIframe.id = "MSketch";
         newIframe.width = "600";
         newIframe.height = "460";
+        newIframe.setAttribute("data-toolbars", "education");
         warningspan.appendChild(newIframe);
         //import structure
         var marvinController;
