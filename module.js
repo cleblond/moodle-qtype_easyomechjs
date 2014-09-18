@@ -316,8 +316,7 @@ M.qtype_easyomechjs = {
                     stripped_answer_id).value);
         });
         var MarvinControllerClass = (function() {
-            function MarvinControllerClass(sketcherInstance,
-                cpkCheckbox, carbonCheckbox) {
+            function MarvinControllerClass(sketcherInstance) {
                 this.sketcherInstance = sketcherInstance;
                 this.sketcherInstance.setDisplaySettings({
                     "cpkColoring": true,
