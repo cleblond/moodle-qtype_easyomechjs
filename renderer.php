@@ -150,7 +150,8 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
     protected function require_js($toreplaceid, question_attempt $qa, $readonly, $correctness) {
         global $PAGE, $CFG;
         $marvinjsconfig = get_config('qtype_easyomechjs_options');
-        $marvinjspath   = "http://" . $_SERVER['HTTP_HOST'] . $marvinjsconfig->path;
+        $protocol = (empty($_SERVER['HTTPS']) or $_SERVER['HTTPS'] == 'off') ? 'http://' : 'https://';
+        $marvinjspath   = $protocol. $_SERVER['HTTP_HOST'] . $marvinjsconfig->path;
         $topnode        = 'div.que.easyomechjs#q' . $qa->get_slot();
         $feedbackimage  = '';
         if ($correctness) {

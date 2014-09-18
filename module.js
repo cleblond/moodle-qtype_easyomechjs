@@ -255,7 +255,6 @@ M.qtype_easyomechjs = {
                 exportPromise = marvinController.sketcherInstance
                     .exportStructure("mrv", null)
                 exportPromise.then(function(source) {
-                    console.log(topnode);
                     Y.one(topnode + ' input.answer').set(
                         'value', source);
                 });
