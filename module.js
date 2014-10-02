@@ -251,14 +251,18 @@ M.qtype_easyomechjs = {
                 return MarvinControllerClass;
             }());
             var inputdiv = Y.one(topnode);
-            inputdiv.ancestor('form').on('submit', function() {
-                exportPromise = marvinController.sketcherInstance
-                    .exportStructure("mrv", null)
-                exportPromise.then(function(source) {
-                    Y.one(topnode + ' input.answer').set(
-                        'value', source);
-                });
-            }, this);
+            //console.log(inputdiv);
+            //console.log(inputdiv.ancestor('form'));
+            if (inputdiv.ancestor('form') != null) {
+		    inputdiv.ancestor('form').on('submit', function() {
+		        exportPromise = marvinController.sketcherInstance
+		            .exportStructure("mrv", null)
+		        exportPromise.then(function(source) {
+		            Y.one(topnode + ' input.answer').set(
+		                'value', source);
+		        });
+		    }, this);   
+            }
         }
     },
     loadXMLString: function(txt) {
