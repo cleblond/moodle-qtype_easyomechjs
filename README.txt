@@ -1,4 +1,5 @@
 Moodle 2.3+ plugin: EasyOChem MarvinJS Mechanism (EasyOMechJS) question type
+Visit www.easyochem.com for demos and further documentation.
 
 Carl LeBlond
 
