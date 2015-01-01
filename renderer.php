@@ -77,8 +77,8 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
             ));
         }
         $toreplaceid = 'applet' . $qa->get_slot();
-        $toreplace   = html_writer::tag('span', get_string('enablejavaandjavascript', 'qtype_easyomechjs'), array(
-            'id' => $toreplaceid
+        $toreplace   = html_writer::tag('div', get_string('enablejavaandjavascript', 'qtype_easyomechjs'), array(
+            'id' => $toreplaceid, 'class' => 'easyomechjs resizable'
         ));
         if (!$placeholder) {
             $answerlabel = html_writer::tag('span', get_string('answer', 'qtype_easyomechjs', ''), array(

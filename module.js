@@ -229,7 +229,7 @@ M.qtype_easyomechjs = {
         var javaparams = ['mol', Y.one(topnode + ' input.mol').get(
             'value')];
         var easyomechjsoptions = new Array();
-        if (!this.show_java(toreplaceid, appletid, name, 600, 460,
+        if (!this.show_java(toreplaceid, appletid, name, 600, 900,
             'chemaxon.marvin.applet.JMSketchLaunch', javaparams,
             stripped_answer_id, moodleurl, marvinpath)) {
             this.show_error(Y, topnode);
@@ -342,7 +342,7 @@ M.qtype_easyomechjs = {
         newIframe.className = "sketcher-frame";
         newIframe.id = "MSketch";
         newIframe.width = "600";
-        newIframe.height = "460";
+        newIframe.height = "900";
         newIframe.setAttribute("data-toolbars", "education");
         warningspan.appendChild(newIframe);
         //import structure
