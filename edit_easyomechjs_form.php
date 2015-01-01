@@ -37,7 +37,8 @@ class qtype_easyomechjs_edit_form extends qtype_shortanswer_edit_form {
         $mform->closeHeaderBefore('answersinstruct');
         $mform->addElement('html', html_writer::start_tag('div', array(
             'style' => 'width:650px;',
-            'id' => 'appletdiv'
+            'id' => 'appletdiv',
+            'class' => 'easyomechjs resizable'
         )));
 
         $mform->addElement('html', html_writer::start_tag('div', array(
