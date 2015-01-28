@@ -94,10 +94,16 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
                 'class' => 'validationerror'
             ));
         }
+
         if (!$options->readonly) {
             $question   = $qa->get_question();
             $answertemp = $question->get_correct_response();
-            $strippedxml = $this->remove_xml_tags($answertemp['answer'], 'MEFlow');
+            $currentanswer    = $qa->get_last_qt_var('answer');
+            if ($currentanswer != null) {
+                $strippedxml = $currentanswer;
+            } else {
+                $strippedxml = $this->remove_xml_tags($answertemp['answer'], 'MEFlow');
+            }
             $strippedanswerid = "stripped_answer" . $qa->get_slot();
             $result .= html_writer::tag('textarea', $strippedxml, array(
                 'id' => $strippedanswerid,
