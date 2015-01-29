@@ -255,9 +255,8 @@ M.qtype_easyomechjs = {
 
                 var nextbutton = inputform.one('input[type=submit]');
                 nextbutton.on('mousedown', function(e) {
-		        exportPromise = marvinController.sketcherInstance.exportStructure("mol", null);
+		        exportPromise = marvinController.sketcherInstance.exportStructure("mrv", null);
 		        exportPromise.then(function(source) {
-		                source = source.replace("\n", 'MDL MOLFILE INSERTED\n');
 				Y.one(topnode + ' input.answer').set('value', source);
 		        }, this);
 
@@ -265,9 +264,8 @@ M.qtype_easyomechjs = {
 
                 var navbuttons = Y.all('a[id^="quiznavbutton"]');
                 navbuttons.on('mousedown', function(e) {
-		        exportPromise = marvinController.sketcherInstance.exportStructure("mol", null);
+		        exportPromise = marvinController.sketcherInstance.exportStructure("mrv", null);
 		        exportPromise.then(function(source) {
-		                source = source.replace("\n", 'MDL MOLFILE INSERTED\n');
 				Y.one(topnode + ' input.answer').set('value', source);
 		        }, this);
                 }, this);
