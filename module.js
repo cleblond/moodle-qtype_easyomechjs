@@ -250,9 +250,32 @@ M.qtype_easyomechjs = {
                 MarvinControllerClass.prototype.init = function init() {};
                 return MarvinControllerClass;
             }());
+
+                var inputform = Y.one(topnode).ancestor('form');
+
+                var nextbutton = inputform.one('input[type=submit]');
+                nextbutton.on('mousedown', function(e) {
+		        exportPromise = marvinController.sketcherInstance.exportStructure("mol", null);
+		        exportPromise.then(function(source) {
+		                source = source.replace("\n", 'MDL MOLFILE INSERTED\n');
+				Y.one(topnode + ' input.answer').set('value', source);
+		        }, this);
+
+                }, this);
+
+                var navbuttons = Y.all('a[id^="quiznavbutton"]');
+                navbuttons.on('mousedown', function(e) {
+		        exportPromise = marvinController.sketcherInstance.exportStructure("mol", null);
+		        exportPromise.then(function(source) {
+		                source = source.replace("\n", 'MDL MOLFILE INSERTED\n');
+				Y.one(topnode + ' input.answer').set('value', source);
+		        }, this);
+                }, this);
+
+
+
+
             var inputdiv = Y.one(topnode);
-            //console.log(inputdiv);
-            //console.log(inputdiv.ancestor('form'));
             if (inputdiv.ancestor('form') != null) {
 		    inputdiv.ancestor('form').on('submit', function() {
 		        exportPromise = marvinController.sketcherInstance
