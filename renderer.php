@@ -34,60 +34,47 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
         global $CFG, $PAGE;
         $question        = $qa->get_question();
         $questiontext    = $question->format_questiontext($qa);
-        $placeholder     = false;
-        $myanswerid      = "my_answer" . $qa->get_slot();
-        $correctanswerid = "correct_answer" . $qa->get_slot();
+        $uniqid = uniqid(); 
+        $myanswerid      = "my_answer" . $uniqid;
+        $correctanswerid = "correct_answer" . $uniqid;
         $marvinjsconfig  = get_config('qtype_easyomechjs_options');
         $marvinjspath    = $marvinjsconfig->path;
         $protocol = (empty($_SERVER['HTTPS']) or $_SERVER['HTTPS'] == 'off') ? 'http://' : 'https://';
         $PAGE->requires->js(new moodle_url($protocol . $_SERVER['HTTP_HOST'] . $marvinjspath . '/gui/lib/promise-0.1.1.min.js'));
         $PAGE->requires->js(new moodle_url($protocol . $_SERVER['HTTP_HOST'] . $marvinjspath . '/js/marvinjslauncher.js'));
-        if (preg_match('/_____+/', $questiontext, $matches)) {
-            $placeholder = $matches[0];
-        }
-        $name2  = 'EASYOMECH' . $qa->get_slot();
-        $result = '';
-        if ($placeholder) {
-            $toreplace    = html_writer::tag('span', get_string('enablejavaandjavascript', 'qtype_easyomechjs'), array(
-                'class' => 'ablock'
-            ));
-            $questiontext = substr_replace($questiontext, $toreplace, strpos($questiontext, $placeholder), strlen($placeholder));
-        }
-        $result .= html_writer::tag('div', $questiontext, array(
+        $result = html_writer::tag('div', $questiontext, array(
             'class' => 'qtext'
         ));
         if ($options->readonly) {
             $result .= html_writer::tag('input', '', array(
-                'id' => 'myresponse' . $qa->get_slot(),
+                'id' => 'myresponse' . $uniqid,
                 'type' => 'button',
                 'value' => 'My Response'
             ));
             $result .= html_writer::tag('input', '', array(
-                'id' => 'corresponse' . $qa->get_slot(),
+                'id' => 'corresponse' . $uniqid,
                 'type' => 'button',
                 'value' => 'Correct Answer'
             ));
             $this->page->requires->js_init_call('M.qtype_easyomechjs.showmyresponse', array(
                 $CFG->version,
-                $qa->get_slot()
+                $uniqid
             ));
             $this->page->requires->js_init_call('M.qtype_easyomechjs.showcorresponse', array(
                 $CFG->version,
-                $qa->get_slot()
+                $uniqid
             ));
         }
-        $toreplaceid = 'applet' . $qa->get_slot();
+        $toreplaceid = 'applet' . $uniqid;
         $toreplace   = html_writer::tag('div', get_string('enablejavaandjavascript', 'qtype_easyomechjs'), array(
             'id' => $toreplaceid, 'class' => 'easyomechjs resizable'
         ));
-        if (!$placeholder) {
-            $answerlabel = html_writer::tag('span', get_string('answer', 'qtype_easyomechjs', ''), array(
+        $answerlabel = html_writer::tag('span', get_string('answer', 'qtype_easyomechjs', ''), array(
                 'class' => 'answerlabel'
             ));
-            $result .= html_writer::tag('div', $answerlabel . $toreplace, array(
+        $result .= html_writer::tag('div', $answerlabel . $toreplace, array(
                 'class' => 'ablock'
             ));
-        }
         if ($qa->get_state() == question_state::$invalid) {
             $lastresponse = $this->get_last_response($qa);
             $result .= html_writer::nonempty_tag('div', $question->get_validation_error($lastresponse), array(
@@ -104,7 +91,7 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
             } else {
                 $strippedxml = $this->remove_xml_tags($answertemp['answer'], 'MEFlow');
             }
-            $strippedanswerid = "stripped_answer" . $qa->get_slot();
+            $strippedanswerid = "stripped_answer" . $uniqid;
             $result .= html_writer::tag('textarea', $strippedxml, array(
                 'id' => $strippedanswerid,
                 'style' => 'display:none;',
@@ -113,7 +100,7 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
         }
         if ($options->readonly) {
             $currentanswer    = $qa->get_last_qt_var('answer');
-            $strippedanswerid = "stripped_answer" . $qa->get_slot();
+            $strippedanswerid = "stripped_answer" . $uniqid;
             $result .= html_writer::tag('textarea', $currentanswer, array(
                 'id' => $strippedanswerid,
                 'style' => 'display:none;',
@@ -135,7 +122,7 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
         $result .= html_writer::tag('div', $this->hidden_fields($qa), array(
             'class' => 'inputcontrol'
         ));
-        $this->require_js($toreplaceid, $qa, $options->readonly, $options->correctness);
+        $this->require_js($toreplaceid, $qa, $options->readonly, $options->correctness, $uniqid);
         return $result;
     }
     protected function remove_xml_tags($xmlstring, $tag) {
@@ -153,7 +140,7 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
         $question = $qa->get_question();
         return $question->usecase . $qa->get_question()->format_generalfeedback($qa);
     }
-    protected function require_js($toreplaceid, question_attempt $qa, $readonly, $correctness) {
+    protected function require_js($toreplaceid, question_attempt $qa, $readonly, $correctness, $uniqid) {
         global $PAGE, $CFG;
         $marvinjsconfig = get_config('qtype_easyomechjs_options');
         $protocol = (empty($_SERVER['HTTPS']) or $_SERVER['HTTPS'] == 'off') ? 'http://' : 'https://';
@@ -163,9 +150,9 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
         if ($correctness) {
             $feedbackimage = $this->feedback_image($this->fraction_for_last_response($qa));
         }
-        $name             = 'EASYOMECH' . $qa->get_slot();
-        $appletid         = 'easyomechjs' . $qa->get_slot();
-        $strippedanswerid = "stripped_answer" . $qa->get_slot();
+        $name             = 'EASYOMECH' . $uniqid;
+        $appletid         = 'easyomechjs' . $uniqid;
+        $strippedanswerid = "stripped_answer" . $uniqid;
         $PAGE->requires->js_init_call('M.qtype_easyomechjs.insert_easyomechjs_applet', array(
             $toreplaceid,
             $name,
