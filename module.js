@@ -262,6 +262,15 @@ M.qtype_easyomechjs = {
 
                 }, this);
 
+                var previewsubmit = inputform.one('input[name="finish"]');;
+                previewsubmit.on(['mousedown', 'touchstart'], function(e) {
+		        exportPromise = marvinController.sketcherInstance.exportStructure("mrv", null);
+		        exportPromise.then(function(source) {
+				Y.one(topnode + ' input.answer').set('value', source);
+		        }, this);
+
+                }, this);
+
                 var navbuttons = Y.all('a[id^="quiznavbutton"]');
                 navbuttons.on('mousedown', function(e) {
 		        exportPromise = marvinController.sketcherInstance.exportStructure("mrv", null);
@@ -272,7 +281,7 @@ M.qtype_easyomechjs = {
 
 
 
-
+/*
             var inputdiv = Y.one(topnode);
             if (inputdiv.ancestor('form') != null) {
 		    inputdiv.ancestor('form').on('submit', function() {
@@ -283,7 +292,7 @@ M.qtype_easyomechjs = {
 		                'value', source);
 		        });
 		    }, this);   
-            }
+            }  */
         }
     },
     loadXMLString: function(txt) {
