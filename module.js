@@ -368,14 +368,23 @@ M.qtype_easyomechjs = {
     insert_applet: function(Y, moodleurl, marvinpath) {
         var warningspan = document.getElementById('appletdiv');
         warningspan.innerHTML = '';
+
+        var answernumSpan = document.createElement("span");
+        answernumSpan.className = ".answernumber";
+        answernumSpan.id = "answernumber";
+        answernumSpan.innerHTML = "Currently viewing answer 1";
+        warningspan.appendChild(answernumSpan);
+
         var newIframe = document.createElement("iframe");
         newIframe.src = marvinpath + "/editor.html";
         newIframe.className = "sketcher-frame";
         newIframe.id = "MSketch";
         newIframe.width = "600";
-        newIframe.height = "900";
-        newIframe.setAttribute("data-toolbars", "education");
+        newIframe.height = "460";
         warningspan.appendChild(newIframe);
+
+
+
         //import structure
         var marvinController;
         MarvinJSUtil.getEditor("#MSketch").then(function(
@@ -486,6 +495,9 @@ M.qtype_easyomechjs.init_viewanswerstring = function(Y, moodle_version) {
                    var newxmlStr = Y.one('#' + textfieldid).get('value');
 
                    var pastePromise = marvinController.sketcherInstance.importStructure("mrv", newxmlStr);
+                   var answernumber = parseInt(buttonid.substr(buttonid.length - 1), 10) + 1;
+                   Y.one('#answernumber').set('innerHTML', 'Currently viewing answer ' + answernumber);
+
                 });
             var MarvinControllerClass = (function() {
                 function MarvinControllerClass(
