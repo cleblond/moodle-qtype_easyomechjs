@@ -56,3 +56,4 @@ $string['pleaseenterananswer'] = 'Please enter an answer.';
 $string['easyomechjseditor'] = 'MarvinJS Editor';
 $string['author'] = 'Question type courtesy of Carl LeBlond, Indiana University of Pennsylvania';
 $string['insert'] = 'Insert from editor';
+$string['view'] = 'View in editor';
