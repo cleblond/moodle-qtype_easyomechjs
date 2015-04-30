@@ -36,7 +36,7 @@ class qtype_easyomechjs_edit_form extends qtype_shortanswer_edit_form {
             get_string('correctanswers', 'qtype_easyomechjs'), get_string('filloutoneanswer', 'qtype_easyomechjs'));
         $mform->closeHeaderBefore('answersinstruct');
         $mform->addElement('html', html_writer::start_tag('div', array(
-            'style' => 'width:650px; height:900;',
+           // 'style' => 'width:650px; overflow: auto;',
             'id' => 'appletdiv',
             'class' => 'easyomechjs resizable'
         )));

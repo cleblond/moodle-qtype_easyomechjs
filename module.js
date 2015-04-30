@@ -336,8 +336,8 @@ M.qtype_easyomechjs = {
         newIframe.src = marvinpath + "/editor.html";
         newIframe.className = "sketcher-frame";
         newIframe.id = appletid;
-        newIframe.width = width;
-        newIframe.height = height;
+        //newIframe.width = width;
+        //newIframe.height = height;
         newIframe.setAttribute("data-toolbars", "education");
         warningspan.appendChild(newIframe);
         var marvinController,
@@ -379,8 +379,8 @@ M.qtype_easyomechjs = {
         newIframe.src = marvinpath + "/editor.html";
         newIframe.className = "sketcher-frame";
         newIframe.id = "MSketch";
-        newIframe.width = "600";
-        newIframe.height = "460";
+        //newIframe.width = "600";
+        //newIframe.height = "460";
         warningspan.appendChild(newIframe);
 
 
