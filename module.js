@@ -253,6 +253,7 @@ M.qtype_easyomechjs = {
 
                 var inputform = Y.one(topnode).ancestor('form');
 
+                if (inputform != null) {
                 var nextbutton = inputform.one('input[type=submit]');
                 nextbutton.on('mousedown', function(e) {
 		        exportPromise = marvinController.sketcherInstance.exportStructure("mrv", null);
@@ -261,8 +262,9 @@ M.qtype_easyomechjs = {
 		        }, this);
 
                 }, this);
-
                 var previewsubmit = inputform.one('input[name="finish"]');
+                }
+
                 if (previewsubmit != null) {
                 previewsubmit.on(['mousedown', 'touchstart'], function(e) {
 		        exportPromise = marvinController.sketcherInstance.exportStructure("mrv", null);
@@ -273,12 +275,14 @@ M.qtype_easyomechjs = {
                 }, this);
                 }
                 var navbuttons = Y.all('a[id^="quiznavbutton"]');
+                if (navbuttons != null) {
                 navbuttons.on('mousedown', function(e) {
 		        exportPromise = marvinController.sketcherInstance.exportStructure("mrv", null);
 		        exportPromise.then(function(source) {
 				Y.one(topnode + ' input.answer').set('value', source);
 		        }, this);
                 }, this);
+                }
 
 
 
@@ -404,7 +408,7 @@ M.qtype_easyomechjs = {
                 this.sketcherInstance.setDisplaySettings({
                     "cpkColoring": true,
                     "lonePairsVisible": true,
-                    "toolbars": "education"
+                    "toolbars": "reporting"
                 });
             };
             return MarvinControllerClass;
@@ -457,7 +461,7 @@ M.qtype_easyomechjs.init_getanswerstring = function(Y, moodle_version) {
                         this.sketcherInstance.setDisplaySettings({
                             "cpkColoring": true,
                             "lonePairsVisible": true,
-                            "toolbars": "education"
+                            "toolbars": "reporting"
                         });
                     };
                 return MarvinControllerClass;
