@@ -19,7 +19,7 @@
  *
  * @package    qtype
  * @subpackage easyomechjs
- * @copyright  2014 onwards Carl LeBlond 
+ * @copyright  2014 onwards Carl LeBlond
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,7 +27,7 @@
 $string['addmoreanswerblanks'] = 'Blanks for {no} More Answers';
 $string['answermustbegiven'] = 'You must enter an answer if there is a grade or feedback.';
 $string['answerno'] = 'Answer {$a}';
-$string['pluginname'] = 'Electron Pushing / Curved Arrow (MarvinJS)';
+$string['pluginname'] = 'Chemistry - Electron Pushing / Curved Arrow (MarvinJS)';
 $string['pluginname_help'] = 'Test and strengthen students knowledge of reaction mechanism, resonance and curved arrow notation.  Draw a reaction mechanism or resonance problem in MarvinJS below.  Be sure to add curved arrows where appropriate...the student will be required to provide them.  Choose from two difficulty levels; Show Products (easier) or Do not Show Products (more difficult).  You can ask questions such as;<br><ul><li>Please add curved arrows showing the flow of electrons for the following reaction?</li><li>Please add curved arrows showing how the following resonance structure could be obtained?</li></ul>';
 $string['pluginname_link'] = 'question/type/easyomechjs';
 $string['pluginnameadding'] = 'Adding a Electron Pushing / Curved Arrow question (MarvinJS)';
