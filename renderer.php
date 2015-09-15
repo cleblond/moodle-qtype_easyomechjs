@@ -18,7 +18,7 @@
  *
  * @package    qtype
  * @subpackage easyomechjs
- * @copyright  2014 onwards Carl LeBlond 
+ * @copyright  2014 onwards Carl LeBlond
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die();
@@ -26,7 +26,7 @@ $generatedfeedback = "";
 /**
  * Generates the output for easyomechjs questions.
  *
- * @copyright  2014 onwards Carl LeBlond 
+ * @copyright  2014 onwards Carl LeBlond
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_easyomechjs_renderer extends qtype_renderer {
@@ -34,7 +34,7 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
         global $CFG, $PAGE;
         $question        = $qa->get_question();
         $questiontext    = $question->format_questiontext($qa);
-        $uniqid = uniqid(); 
+        $uniqid = uniqid();
         $myanswerid      = "my_answer" . $uniqid;
         $correctanswerid = "correct_answer" . $uniqid;
         $marvinjsconfig  = get_config('qtype_easyomechjs_options');
@@ -49,12 +49,12 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
             $result .= html_writer::tag('input', '', array(
                 'id' => 'myresponse' . $uniqid,
                 'type' => 'button',
-                'value' => 'My Response'
+                'value' => get_string('my_response', 'qtype_easyomechjs')
             ));
             $result .= html_writer::tag('input', '', array(
                 'id' => 'corresponse' . $uniqid,
                 'type' => 'button',
-                'value' => 'Correct Answer'
+                'value' => get_string('correct_answer', 'qtype_easyomechjs')
             ));
             $this->page->requires->js_init_call('M.qtype_easyomechjs.showmyresponse', array(
                 $CFG->version,

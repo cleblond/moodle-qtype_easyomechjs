@@ -296,7 +296,7 @@ M.qtype_easyomechjs = {
 		            Y.one(topnode + ' input.answer').set(
 		                'value', source);
 		        });
-		    }, this);   
+		    }, this);
             }  */
         }
     },
@@ -376,7 +376,7 @@ M.qtype_easyomechjs = {
         var answernumSpan = document.createElement("span");
         answernumSpan.className = ".answernumber";
         answernumSpan.id = "answernumber";
-        answernumSpan.innerHTML = "Currently viewing answer 1";
+        answernumSpan.innerHTML = M.util.get_string('viewing_answer1', 'qtype_easyomechjs');
         warningspan.appendChild(answernumSpan);
 
         var newIframe = document.createElement("iframe");
@@ -500,7 +500,7 @@ M.qtype_easyomechjs.init_viewanswerstring = function(Y, moodle_version) {
 
                    var pastePromise = marvinController.sketcherInstance.importStructure("mrv", newxmlStr);
                    var answernumber = parseInt(buttonid.substr(buttonid.length - 1), 10) + 1;
-                   Y.one('#answernumber').set('innerHTML', 'Currently viewing answer ' + answernumber);
+                   Y.one('#answernumber').set('innerHTML', M.util.get_string('viewing_answer', 'qtype_easyomechjs')' ' + answernumber);
 
                 });
             var MarvinControllerClass = (function() {
