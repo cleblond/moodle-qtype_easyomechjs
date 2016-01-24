@@ -24,7 +24,7 @@ M.qtype_easyomechjs = {
                         this.sketcherInstance.setDisplaySettings({
                             "cpkColoring": true,
                             "lonePairsVisible": true,
-                            "toolbars": "education"
+                            "toolbars": "reporting"
                         });
                     };
                 return MarvinControllerClass;
@@ -55,7 +55,7 @@ M.qtype_easyomechjs = {
                         this.sketcherInstance.setDisplaySettings({
                             "cpkColoring": true,
                             "lonePairsVisible": true,
-                            "toolbars": "education"
+                            "toolbars": "reporting"
                         });
                     };
                 return MarvinControllerClass;
@@ -136,7 +136,7 @@ M.qtype_easyomechjs = {
                         this.sketcherInstance.setDisplaySettings({
                             "cpkColoring": true,
                             "lonePairsVisible": true,
-                            "toolbars": "education"
+                            "toolbars": "reporting"
                         });
                     };
                 return MarvinControllerClass;
@@ -216,7 +216,7 @@ M.qtype_easyomechjs = {
                         this.sketcherInstance.setDisplaySettings({
                             "cpkColoring": true,
                             "lonePairsVisible": true,
-                            "toolbars": "education"
+                            "toolbars": "reporting"
                         });
                     };
                 return MarvinControllerClass;
@@ -342,7 +342,7 @@ M.qtype_easyomechjs = {
         newIframe.id = appletid;
         //newIframe.width = width;
         //newIframe.height = height;
-        newIframe.setAttribute("data-toolbars", "education");
+        newIframe.setAttribute("data-toolbars", "reporting");
         warningspan.appendChild(newIframe);
         var marvinController,
             inputController;
@@ -360,7 +360,7 @@ M.qtype_easyomechjs = {
                 this.sketcherInstance.setDisplaySettings({
                     "cpkColoring": true,
                     "lonePairsVisible": true,
-                    "toolbars": "education"
+                    "toolbars": "reporting"
                 });
                 this.init();
             }
@@ -515,7 +515,7 @@ M.qtype_easyomechjs.init_viewanswerstring = function(Y, moodle_version) {
                         this.sketcherInstance.setDisplaySettings({
                             "cpkColoring": true,
                             "lonePairsVisible": true,
-                            "toolbars": "education"
+                            "toolbars": "reporting"
                         });
                     };
                 return MarvinControllerClass;
