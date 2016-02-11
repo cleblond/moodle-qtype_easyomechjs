@@ -49,12 +49,12 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
             $result .= html_writer::tag('input', '', array(
                 'id' => 'myresponse' . $uniqid,
                 'type' => 'button',
-                'value' => 'My Response'
+                'value' => get_string('my_response', 'qtype_easyomechjs')
             ));
             $result .= html_writer::tag('input', '', array(
                 'id' => 'corresponse' . $uniqid,
                 'type' => 'button',
-                'value' => 'Correct Answer'
+                'value' => get_string('correct_answer', 'qtype_easyomechjs')
             ));
             $this->page->requires->js_init_call('M.qtype_easyomechjs.showmyresponse', array(
                 $CFG->version,
