@@ -500,7 +500,7 @@ M.qtype_easyomechjs.init_viewanswerstring = function(Y, moodle_version) {
 
                    var pastePromise = marvinController.sketcherInstance.importStructure("mrv", newxmlStr);
                    var answernumber = parseInt(buttonid.substr(buttonid.length - 1), 10) + 1;
-                   Y.one('#answernumber').set('innerHTML', M.util.get_string('viewing_answer', 'qtype_easyomechjs')' ' + answernumber);
+                   Y.one('#answernumber').set('innerHTML', M.util.get_string('viewing_answer', 'qtype_easyomechjs')+' ' + answernumber);
 
                 });
             var MarvinControllerClass = (function() {
