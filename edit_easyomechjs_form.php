@@ -74,7 +74,7 @@ class qtype_easyomechjs_edit_form extends qtype_shortanswer_edit_form {
         $repeated     = parent::get_per_answer_fields($mform, $label, $gradeoptions, $repeatedoptions, $answersoption);
         $scriptattrs  = 'class = id_insert';
         $viewbutton = $mform->createElement('button', 'view',
-            get_string('view', 'qtype_easyonamejs'), 'class = id_view');
+            get_string('view', 'qtype_easyomechjs'), 'class = id_view');
         array_splice($repeated, 1, 0, array(
             $viewbutton
         ));

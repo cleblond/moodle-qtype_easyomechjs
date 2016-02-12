@@ -61,3 +61,6 @@ $string['my_response'] = 'My Response';
 $string['correct_answer'] = 'Correct Answer';
 $string['viewing_answer1'] = 'Currently viewing answer 1';
 $string['viewing_answer'] = 'Currently viewing answer';
+$string['feedback_no_arrows'] = 'You did not add any arrows.  Use the arrow icon on the left to add arrows next time!';
+$string['feedback_radical'] = 'This is a radical reaction but you used full arrow heads.<br> You should use half arrow heads for radical reactions.  In radical reactions single electrons move.';
+$string['feedback_polar'] = 'This is a polar reaction but you used half arrow heads.<br> You should use full arrow heads for polar reactions.  In polar reactions the electrons move in pairs.';

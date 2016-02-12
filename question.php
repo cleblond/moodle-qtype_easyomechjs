@@ -24,16 +24,12 @@
 global $qa;
 defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/question/type/shortanswer/question.php');
-$generatedfeedback = "";
 global $PAGE;
 $PAGE->requires->strings_for_js(array('viewing_answer1', 'viewing_answer'), 'qtype_easyomechjs');
 
 class qtype_easyomechjs_question extends qtype_shortanswer_question {
     public function compare_response_with_answer(array $response, question_answer $answer) {
-        global $generatedfeedback, $DB;
-        $test           = $DB->get_record('user', array(
-            'id' => '1'
-        ));
+        global $DB;
 
         if (!array_key_exists('answer', $response) || is_null($response['answer'])) {
             return false;
@@ -75,30 +71,29 @@ class qtype_easyomechjs_question extends qtype_shortanswer_question {
             $arrowsansall .= "*" . $arrowans[$i];
             $i = $i + 1;
         }
+        /*    general feedback
         if (!isset($arrowusr)) {
-            $this->usecase = "You did not add any arrows.  Use the arrow icon on the left to add arrows next time!";
+            $this->usecase = get_string('feedback_no_arrows', 'qtype_easyomechjs');
             return 0;
         }
         if (isset($cmlans->MDocument[0]->MEFlow['headFlags'])) { // Must be radical reaction!
-            // Check to see if usr submitted radical arrows.
             if (!isset($cmlusr->MDocument[0]->MEFlow['headFlags'])) {
-                $this->usecase = "This is a radical reaction but you used full arrow heads.<br>
-                    You should use half arrow heads for radical reactions.  In radical reactions single electrons move.";
+                $this->usecase = get_string('feedback_radical', 'qtype_easyomechjs');
                 return 0;
             }
         } else { // Must be polar reaction.
             if (isset($cmlusr->MDocument[0]->MEFlow['headFlags'])) {
-                $this->usecase = "This is a polar reaction but you used half arrow heads.<br>
-                    You should use full arrow heads for polar reactions.  In polar reactions the electrons move in pairs.";
+                $this->usecase = get_string('feedback_polar', 'qtype_easyomechjs');
                 return 0;
             }
         }
-
+        */
         if (array_count_values($arrowusr) == array_count_values($arrowans)) {
             return 1;
         } else {
             return 0;
         }
+        
     }
     public function get_expected_data() {
         return array(

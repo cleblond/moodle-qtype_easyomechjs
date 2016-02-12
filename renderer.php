@@ -22,7 +22,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die();
-$generatedfeedback = "";
 /**
  * Generates the output for easyomechjs questions.
  *
@@ -56,6 +55,7 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
                 'type' => 'button',
                 'value' => get_string('correct_answer', 'qtype_easyomechjs')
             ));
+            $response_buttons = $result;
             $this->page->requires->js_init_call('M.qtype_easyomechjs.showmyresponse', array(
                 $CFG->version,
                 $uniqid
@@ -145,10 +145,12 @@ class qtype_easyomechjs_renderer extends qtype_renderer {
         }
         return $dom->saveXML();
     }
-    protected function general_feedback(question_attempt $qa) {
+    /*
+    public function general_feedback(question_attempt $qa) {
         $question = $qa->get_question();
         return $question->usecase . $qa->get_question()->format_generalfeedback($qa);
     }
+    */
     protected function require_js($toreplaceid, question_attempt $qa, $readonly, $correctness, $uniqid) {
         global $PAGE, $CFG;
         $marvinjsconfig = get_config('qtype_easyomechjs_options');
