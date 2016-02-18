@@ -40,6 +40,7 @@ class qtype_easyomechjs_question extends qtype_shortanswer_question {
         $arrowscorrect = 0;
         $i             = 0;
         $arrowsusrall  = "";
+        $arrowusr = [];
         foreach ($cmlusr->MDocument[0]->MEFlow as $meflowusr) {
             $numbasepointsusr = $meflowusr->MEFlowBasePoint->count();
             $numsetpointsusr  = $meflowusr->MAtomSetPoint->count();
