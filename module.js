@@ -254,8 +254,9 @@ M.qtype_easyomechjs = {
                 var inputform = Y.one(topnode).ancestor('form');
 
                 if (inputform != null) {
-                var nextbutton = inputform.one('input[type=submit]');
-                nextbutton.on(['mousedown', 'touchstart'], function(e) {
+                // Select both previous and next buttons
+                var submitbuttons = inputform.all('input[type=submit]');
+                submitbuttons.on(['mousedown', 'touchstart'], function(e) {
 		        exportPromise = marvinController.sketcherInstance.exportStructure("mrv", null);
 		        exportPromise.then(function(source) {
 				Y.one(topnode + ' input.answer').set('value', source);
